@@ -3,7 +3,7 @@
 
 import cv2.cv as cv
 capture=cv.CaptureFromCAM(0)
-hc = cv.Load("haarcascades/haarcascade_frontalface_alt.xml")
+hc = cv.Load("/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml")
 while True:
   frame=cv.QueryFrame(capture)
   faces = cv.HaarDetectObjects(frame, hc, cv.CreateMemStorage(), 1.2, 2, cv.CV_HAAR_DO_CANNY_PRUNING, (0, 0))
