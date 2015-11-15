@@ -10,7 +10,7 @@ while True:
   ret, img=capture.read()
   gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
   gray = cv2.equalizeHist(gray)
-  rects = cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5, minSize=(30, 30), flags = cv.CV_HAAR_SCALE_IMAGE)
+  rects = cascade.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=5)
   for x1, y1, x2, y2 in rects:
     cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
   cv2.imshow('Video', img)
