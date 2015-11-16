@@ -2,13 +2,12 @@
 #coding=utf-8
 
 import cv2
-
+import time
 capture = cv2.VideoCapture(0)
-width = int(capture.get(3))
-height = int(capture.get(4))
 cascade_fn = 'haarcascades/haarcascade_frontalface_alt.xml'
 cascade = cv2.CascadeClassifier(cascade_fn)
 firstFrame = None
+count = 0
 while True:
   (grabbed, frame) = capture.read()
   gray_step1 = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -32,6 +31,10 @@ while True:
   for x1, y1, x2, y2 in rects:
     cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
   cv2.imshow("Security Feed", frame)
+  count += 1
+  imagefile = "face_"+str(count)+".png"
+  cv2.imwrite(imagefile, frame)
+  time.sleep(5)
   key=cv2.waitKey(1)
   if key==ord('q'):
     break
