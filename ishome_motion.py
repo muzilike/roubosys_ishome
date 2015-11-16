@@ -21,11 +21,14 @@ while True:
   thresh = cv2.dilate(thresh, None, iterations=2)
   (cnts, _) = cv2.findContours(thresh.copy(), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_SIMPLE)
   for c in cnts:
-     if cv2.contourArea(c) < 10000:
-       continue
+     #if cv2.contourArea(c) < 10000:
+     #  continue
      (x, y, w, h) = cv2.boundingRect(c)
      cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
   cv2.imshow("Security Feed", frame)
   firstFrame = gray.copy()
+  key=cv2.waitKey(1)
+  if key==ord('q'):
+    break
 capture.release()
 cv2.destroyAllWindows()
