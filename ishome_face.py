@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
 import cv2
-import cv2.cv as cv
 
 capture=cv2.VideoCapture(0)
 cascade_fn = 'haarcascades/haarcascade_frontalface_alt.xml'
